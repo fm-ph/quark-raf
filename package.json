@@ -1,0 +1,82 @@
+{
+  "name": "quark-raf",
+  "version": "0.0.0-development",
+  "description": "Simple requestAnimationFrame based on Singleton design pattern",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "cross-env-shell BABEL_ENV=production \"npm run build:clean && babel src -d lib\"",
+    "build:watch": "npm run build -- -w",
+    "build:clean": "del-cli lib/",
+    "docs": "npm run docs:clean && documentation build src/* --format html --o docs",
+    "docs:clean": "del-cli docs/",
+    "docs:deploy": "npm run docs && gh-pages -d docs/ -m 'docs: update'",
+    "docs:serve": "documentation serve",
+    "test": "cross-env BABEL_ENV=test standard && jest",
+    "test:watch": "npm test -- --watch",
+    "test:coverage": "cross-env BABEL_ENV=test jest --coverage && cat ./coverage/lcov.info | coveralls",
+    "demo": "node_modules/.bin/budo demo/src/index.js:bundle.js --dir demo/public --live --open",
+    "prepublishOnly": "npm test && npm run build",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+  },
+  "keywords": [
+    "quark",
+    "raf",
+    "singleton"
+  ],
+  "author": "fm_ph",
+  "contributors": [
+    "Patrick Heng <hengpatrick.pro@gmail.com> (http://hengpatrick.fr/)",
+    "Fabien Motte <contact@fabienmotte.com> (http://fabienmotte.com/)"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fm-ph/quark-raf.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fm-ph/quark-raf/issues"
+  },
+  "homepage": "https://github.com/fm-ph/quark-raf",
+  "license": "MIT",
+  "dependencies": {
+    "quark-log": "^1.1.0",
+    "raf": "^3.3.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.22.2",
+    "babel-eslint": "^8.0.1",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-runtime": "^6.22.0",
+    "babel-preset-es2015": "^6.22.0",
+    "babelify": "^7.3.0",
+    "budo": "^10.0.3",
+    "coveralls": "^3.0.0",
+    "cross-env": "^5.1.0",
+    "del-cli": "^1.1.0",
+    "documentation": "^5.3.2",
+    "gh-pages": "^1.0.0",
+    "jest-cli": "^21.2.1",
+    "semantic-release": "^8.2.0",
+    "standard": "^10.0.3"
+  },
+  "browserify": {
+    "transform": [
+      "babelify"
+    ]
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "ignore": [
+      "docs",
+      "lib"
+    ],
+    "globals": [
+      "jest",
+      "test",
+      "describe",
+      "it",
+      "expect",
+      "beforeEach",
+      "afterEach"
+    ]
+  }
+}

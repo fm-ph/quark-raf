@@ -1,0 +1,8 @@
+node_modules
+coverage
+docs
+lib
+.history
+.vscode
+*.log
+.DS_Store
