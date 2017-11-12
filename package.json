@@ -63,6 +63,22 @@
       "babelify"
     ]
   },
+  "babel": {
+    "presets": [
+      "es2015"
+    ],
+    "plugins": [
+      "add-module-exports"
+    ],
+    "env": {
+      "development": {
+        "sourceMaps": "inline",
+        "plugins": [
+          "transform-runtime"
+        ]
+      }
+    }
+  },
   "standard": {
     "parser": "babel-eslint",
     "ignore": [
