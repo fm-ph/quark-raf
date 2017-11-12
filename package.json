@@ -58,11 +58,6 @@
     "semantic-release": "^8.2.0",
     "standard": "^10.0.3"
   },
-  "browserify": {
-    "transform": [
-      "babelify"
-    ]
-  },
   "babel": {
     "presets": [
       "es2015"
